@@ -8,7 +8,7 @@ RUN wget -q -nv -O- https://api.github.com/repos/peterzam/Outlinebot/releases/la
 
 ENV CHANNEL_ID="86442135xxxxxxxxxx"
 ENV BOT_TOKEN="ODY2NjUyNjEzNzxxxxxxxxxx.xxxxx.xxxxxxxxxxxxxxxxxxxxxxxxxxx"
-ENV SECRETURL="https://xxxxxxxxxx:xxxx/xxxxxxxxxxxxxxxx/access-keys"
+ENV SECRET_URL="https://xxxxxxxxxx:xxxx/xxxxxxxxxxxxxxxx"
 ENV ROLE_CALL="86404724xxxxxxxxxx"
 ENV ROLE_COM="86404982xxxxxxxxxx"
 ENV ROLE_DATA="86404773xxxxxxxxxx"
