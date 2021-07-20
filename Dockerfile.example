@@ -1,5 +1,10 @@
 FROM alpine:latest
 RUN apk --no-cache add jq 
+RUN apk add --no-cache libc6-compat
+
+RUN mkdir /app
+WORKDIR /app
+RUN wget -q -nv -O- https://api.github.com/repos/peterzam/Outlinebot/releases/latest 2>/dev/null |  jq -r '.assets[2] | select(.browser_download_url) | .browser_download_url' | xargs wget -O -  | tar -xz
 
 ENV CHANNEL_ID="86442135xxxxxxxxxx"
 ENV BOT_TOKEN="ODY2NjUyNjEzNzxxxxxxxxxx.xxxxx.xxxxxxxxxxxxxxxxxxxxxxxxxxx"
@@ -10,8 +15,4 @@ ENV ROLE_DATA="86404773xxxxxxxxxx"
 ENV ROLE_FB="86404996xxxxxxxxxx"
 ENV ROLE_WEB="86405010xxxxxxxxxx"
 
-RUN mkdir /app
-WORKDIR /app
-RUN wget -q -nv -O- https://api.github.com/repos/peterzam/Outlinebot/releases/latest 2>/dev/null |  jq -r '.assets[2] | select(.browser_download_url) | .browser_download_url' | xargs wget -O -  | tar -xz
-
-CMD [ "/app/OutlineBot" ]
+CMD [ "./OutlineBot" ]
