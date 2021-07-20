@@ -12,6 +12,6 @@ ENV ROLE_WEB="86405010xxxxxxxxxx"
 
 RUN mkdir /app
 WORKDIR /app
-RUN wget -q -nv -O- https://api.github.com/repos/peterzam/asterbot/releases/latest 2>/dev/null |  jq -r '.assets[2] | select(.browser_download_url) | .browser_download_url' | xargs wget -O -  | tar -xz
+RUN wget -q -nv -O- https://api.github.com/repos/peterzam/Outlinebot/releases/latest 2>/dev/null |  jq -r '.assets[2] | select(.browser_download_url) | .browser_download_url' | xargs wget -O -  | tar -xz
 
 CMD [ "/app/OutlineBot" ]
