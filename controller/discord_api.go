@@ -10,8 +10,6 @@ import (
 	"github.com/bwmarrin/discordgo"
 )
 
-var CHANNEL_ID = os.Getenv("CHANNEL_ID")
-
 func StartBot() {
 	dg, err := discordgo.New("Bot " + os.Getenv("BOT_TOKEN"))
 	if err != nil {
@@ -36,7 +34,7 @@ func messageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 	if m.Author.ID == s.State.User.ID {
 		return
 	}
-	if m.ChannelID == CHANNEL_ID && (m.Content == "!req" || m.Content == "!request" || m.Content == "!vpn") {
+	if m.ChannelID == os.Getenv("CHANNEL_ID") && (m.Content == "!req" || m.Content == "!request" || m.Content == "!vpn") {
 		u, err := s.UserChannelCreate(m.Author.ID)
 		if err != nil {
 			log.Println(":::User Channel create error <s.UserChannelCreate>:::\n", err)
@@ -54,7 +52,7 @@ func messageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 			s.ChannelMessageSendReply(m.ChannelID, name+"\nVPN key sent.\nPlease check direct messages.", m.Reference())
 		}
 	}
-	if m.Content == "!about" {
+	if m.ChannelID == os.Getenv("CHANNEL_ID") && m.Content == "!about" {
 		s.ChannelMessageSend(m.ChannelID, "https://github.com/peterzam/OutlineBot")
 	}
 }

@@ -18,8 +18,6 @@ type User struct {
 	AccessURL string `json:"accessUrl"`
 }
 
-var SECRETURL = os.Getenv("SECRET_URL")
-
 func CreateNewUser(name string) (string, bool) {
 	s, err := GetUsers()
 	if err != nil {
@@ -49,7 +47,7 @@ func CreateNewUser(name string) (string, bool) {
 
 func GetUsers() (string, error) {
 	client := &http.Client{}
-	req, err := http.NewRequest(http.MethodGet, SECRETURL+"/access-keys/", strings.NewReader(""))
+	req, err := http.NewRequest(http.MethodGet, os.Getenv("SECRET_URL")+"/access-keys/", strings.NewReader(""))
 	if err != nil {
 		return "", err
 	}
@@ -66,7 +64,7 @@ func GetUsers() (string, error) {
 
 func RequestNewUser() (User, error) {
 	client := &http.Client{}
-	req, err := http.NewRequest(http.MethodPost, SECRETURL+"/access-keys/", strings.NewReader(""))
+	req, err := http.NewRequest(http.MethodPost, os.Getenv("SECRET_URL")+"/access-keys/", strings.NewReader(""))
 	if err != nil {
 		return User{}, err
 	}
@@ -85,7 +83,7 @@ func RequestNewUser() (User, error) {
 
 func RenameUser(r *User) error {
 	client := &http.Client{}
-	req, err := http.NewRequest(http.MethodPut, SECRETURL+"/access-keys/"+r.ID+"/name", strings.NewReader(`{"name": "`+r.Name+`"}`))
+	req, err := http.NewRequest(http.MethodPut, os.Getenv("SECRET_URL")+"/access-keys/"+r.ID+"/name", strings.NewReader(`{"name": "`+r.Name+`"}`))
 	if err != nil {
 		return err
 	}

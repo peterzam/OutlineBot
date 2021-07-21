@@ -12,7 +12,7 @@ docker pull peterzam/outlinebot
 ```
 iii. Docker run
 ``` bash
-docker run -d --env-file ./env.list --name outlinebot peterzam/outlinebot
+docker run -d --env-file=env.list --name outlinebot peterzam/outlinebot
 ```
 <hr>
 
