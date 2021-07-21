@@ -4,15 +4,15 @@
 
 ## 1. How to run :
 
-1. Copy and add tokens of Dockerfile
+i. Add token to 'env.list' and rename file
 
-2. Docker Build
-``` bash 
-docker build -t peterzam/outlinebot .
-```
-3. Docker run
+ii. Pull from docker hub:
 ``` bash
-docker run -d --name outlinebot peterzam/outlinebot
+docker pull peterzam/outlinebot
+```
+iii. Docker run
+``` bash
+docker run -d --env-file ./env.list --name outlinebot peterzam/outlinebot
 ```
 <hr>
 
