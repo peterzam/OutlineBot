@@ -16,6 +16,13 @@ docker run -d --env-file ./env.list --name outlinebot peterzam/outlinebot
 ```
 <hr>
 
+## 1.1. Raw run
+i. Download [release](https://github.com/peterzam/OutlineBot/releases)
+
+ii. Add token to 'env.list' and rename file
+
+iii. Run
+<hr>
 ## 2. Commands : !req, !request, !vpn, !about
 
 <hr>

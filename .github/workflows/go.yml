@@ -17,4 +17,4 @@ jobs:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         goos: ${{ matrix.goos }}
         goarch: ${{ matrix.goarch }}
-        extra_files: LICENSE README.md Dockerfile.example
+        extra_files: LICENSE README.md env.list.example
